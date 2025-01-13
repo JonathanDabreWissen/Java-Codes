@@ -21,6 +21,13 @@ abstract class Employ{
 		System.out.println();
 	}
 	
+	public boolean validAge(int age){
+
+		if(age>21 || age<60){
+			return true;
+		}
+		return false;
+	}
 
 	Employ(String name, int age, String designation, int salary ){
 		this.empId = employCount;

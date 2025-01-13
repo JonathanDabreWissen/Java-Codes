@@ -1,8 +1,8 @@
 import java.io.*;
 
-public class ExceptionDemo{
+class A {
 
-	public static void main(String args[]){
+	public void abc(){
 		int a = 50;
 
 		try {
@@ -40,6 +40,7 @@ public class ExceptionDemo{
 		catch(UserException e){
 			System.out.println("Custom Exception Handler...");;
 			System.out.println("Reason: " +e.getMessage());
+			e.printStackTrace();
 			e.display();
 		}
 		catch(Exception e){
@@ -49,11 +50,30 @@ public class ExceptionDemo{
 			System.out.println("Thank You");
 		}
 		System.out.println("Program continues..");
+
+	}
+
+	public void xyz(){
+		atoz();
+	}
+
+	public void atoz(){
+		abc();
+	}
+}
+
+public class ExceptionDemo{
+	
+	
+	public static void main(String args[]){
+		A a1 = new A();
+		a1.xyz();
 	}
 }
 
 
-class UserException extends Exception{
+class UserException extends Exception // or RuntimeException 
+{
 
 	public UserException(){
 		super();
