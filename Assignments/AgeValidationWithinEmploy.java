@@ -1,4 +1,4 @@
-package com.assignment.employManagement;
+package com.ageValidationWithinEmploy.employManagement;
 
 import java.util.*;
 
@@ -23,10 +23,10 @@ abstract class Employ{
 	
 	public static boolean validAge(int age){
 
-		if(age>21 || age<60){
-			return true;
+		if(age<21 || age>60){
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	Employ(String name, int age, String designation, int salary ){
