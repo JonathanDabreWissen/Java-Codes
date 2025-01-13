@@ -24,6 +24,9 @@ public class ExceptionDemo{
 				if(i==6){
 					System.exit(0);
 				}
+				if(i==4){
+					throw new UserException("when i is 4");
+				}
 
 			}
 			
@@ -34,6 +37,11 @@ public class ExceptionDemo{
 		catch(NullPointerException  e){
 			System.out.println("Null pointer exception handler");
 		}
+		catch(UserException e){
+			System.out.println("Custom Exception Handler...");;
+			System.out.println("Reason: " +e.getMessage());
+			e.display();
+		}
 		catch(Exception e){
 			System.out.println("Default Exception Handling");
 		}
@@ -42,4 +50,19 @@ public class ExceptionDemo{
 		}
 		System.out.println("Program continues..");
 	}
+}
+
+
+class UserException extends Exception{
+
+	public UserException(){
+		super();
+	}
+	public UserException(String msg){
+		super(msg);
+	}
+	public void display(){
+		System.out.println("My custom display() logic");
+	}
+	
 }
