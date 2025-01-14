@@ -41,11 +41,13 @@ public class TryWithResources{
 			
 			a1.process();
 			if(true){
-				throw new NullPointerException();
+				//throw new NullPointerException();
+				//return;
 			}
 			b1.process();
 			
 		}
+		//System.out.println(a1);
 		System.out.println("Program Continues...");
 					
 	}
