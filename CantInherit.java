@@ -31,6 +31,7 @@ public class CantInherit{
 
 	public static void main(String args[]){
 		
-				
+			GlobalManager gm = new GlobalManager();
+			gm.abc();	
 	}
 }
