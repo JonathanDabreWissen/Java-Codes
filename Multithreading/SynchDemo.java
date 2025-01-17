@@ -28,12 +28,16 @@ public class SynchDemo {
         Thread t3 = new Thread(a1);
 
         t1.setName("Akash");
-        t2.setName("Shubhash");
+        t2.setName("Daemon");
         t3.setName("Prakash");
+
+        t2.setDaemon(true);
         
         // a1.run();
         t1.start();
         t2.start();
         t3.start();
+
+        // t2.setDaemon(false);
     }
 }

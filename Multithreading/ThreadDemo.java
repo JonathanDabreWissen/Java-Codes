@@ -45,9 +45,9 @@ public class ThreadDemo {
         B b1 = new B();
         C c1 = new C();
 
-        a1.setName("Jonathan");
-        b1.setName("David");
-        c1.setName("Saul");
+        a1.setName("Rita");
+        b1.setName("Geeta");
+        c1.setName("Sita");
 
         a1.start();
         b1.start();
@@ -58,8 +58,13 @@ public class ThreadDemo {
             if(i==5){
                 b1.suspend();
             }
-            if (i==18) {
-                b1.resume();
+            if(i==10){
+                c1.stop();
+            }
+            if(i==12){
+                System.out.println(" a1 is alive: " + a1.isAlive());
+                System.out.println(" b1 is alive: " + b1.isAlive());
+                System.out.println(" c1 is alive: " + c1.isAlive());
             }
         }
 
