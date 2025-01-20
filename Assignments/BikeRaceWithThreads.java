@@ -3,26 +3,45 @@ import java.time.LocalTime;
 import java.util.Random;
 import java.util.Arrays;
 
-class StopTime{
+class CustomTime{
     int id;
-    LocalTime time;
+    LocalTime startTime;
+    LocalTime stopTime;
 }
 
 class Biker extends Thread{
 
+    static boolean allReady = false;
+    static final Object lock = new Object();
     
-    StopTime stopTime = null;
+    CustomTime customTime = null;
     int bikerId;
 
-    Biker(int bikerId, String name, StopTime stopTimeObj){
+
+    Biker(int bikerId, String name, CustomTime customTimeObj){
         this.bikerId = bikerId;
         super.setName(name);
-        stopTime = stopTimeObj;
+        customTime = customTimeObj;
     }
 
     public void run (){
-        stopTime.id = this.bikerId;
+        customTime.id = this.bikerId;
         Random rand = new Random();
+
+        if(!allReady){
+        
+            synchronized (lock) {
+                try {
+                    lock.wait();                
+                } catch (Exception e) {
+                    System.out.println(super.getName() +" interrupted while waiting to start the race.");
+                }
+            } 
+
+        }
+        
+        customTime.startTime = LocalTime.now();
+        
 
         for(int i = 0; i<100; i = i+ rand.nextInt(10) + 1){
             System.out.println(this.getName() + " is at " + i + "0m");
@@ -33,7 +52,7 @@ class Biker extends Thread{
             }
         }
         System.out.println( "Biker " + this.getName() + " has completed the race");
-        stopTime.time = LocalTime.now();
+        customTime.stopTime = LocalTime.now();
     }
 
 }
@@ -59,12 +78,12 @@ public class BikeRaceWithThreads {
     }
     
     public static void main(String[] args) {
-        StopTime[] results = new StopTime[10];
+        CustomTime[] results = new CustomTime[10];
 
         // System.out.println(results[0]); // null
 
         for(int i = 0; i<10; i++){
-            results[i] = new StopTime();
+            results[i] = new CustomTime();
         }
         
 
@@ -91,6 +110,12 @@ public class BikeRaceWithThreads {
         b9.start();
         b10.start();
 
+        synchronized (Biker.lock) {
+            Biker.allReady = true;
+            Biker.lock.notifyAll();
+        }
+		
+
         try{
             b1.join();
             b2.join();
@@ -107,12 +132,12 @@ public class BikeRaceWithThreads {
         }
 
 
-        Arrays.sort(results, (a, b) -> a.time.compareTo(b.time));
+        Arrays.sort(results, (a, b) -> a.stopTime.compareTo(b.stopTime));
 
         System.out.println();
         System.out.println("The results are as follows: ");
         for (int i = 0; i < results.length; i++) {
-            System.out.println("Biker " + results[i].id + " finished at " + results[i].time);
+            System.out.println("Biker " + results[i].id +" started at "+ results[i].startTime  +" finished at " + results[i].stopTime );
         }
 
 
