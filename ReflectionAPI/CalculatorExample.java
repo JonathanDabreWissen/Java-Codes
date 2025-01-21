@@ -37,7 +37,7 @@ public class CalculatorExample {
 
         System.out.println("Choose from list of Methods below: ");
         for(Method m: methods){
-            System.out.println(m + ", ");
+            System.out.println(m.getName() + ", ");
         }
 
         System.out.println();
