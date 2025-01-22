@@ -31,7 +31,7 @@ public class DemoCollectionFramework {
         // TreeSet obj = new TreeSet();
         // LinkedHashSet obj = new LinkedHashSet();
         // ArrayList obj = new ArrayList();
-        LinkedList obj = new LinkedList();
+        LinkedList<String> obj = new LinkedList();
 
         obj.add("111");
         obj.add("222");
@@ -53,8 +53,8 @@ public class DemoCollectionFramework {
 
         // Hashtable mobj = new Hashtable();
         // HashMap mobj = new HashMap();
-        // TreeMap mobj = new TreeMap();
-        LinkedHashMap mobj = new LinkedHashMap();
+        //LinkedHashMap mobj = new LinkedHashMap();
+        TreeMap<String, String> mobj = new TreeMap();
 
         mobj.put("111", "Rajesh");
         mobj.put("333", "Ramesh");
@@ -63,6 +63,7 @@ public class DemoCollectionFramework {
         // mobj.put("444", null);
         mobj.put("444", "Dinesh");
         mobj.put("555", "Suresh");
+        
 
         Set s = mobj.entrySet();
         Iterator mi = s.iterator();

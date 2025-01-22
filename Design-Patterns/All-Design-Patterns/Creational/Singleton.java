@@ -47,7 +47,24 @@ class ThreadSafeSingleton{
 }
 
 class DoubleCheckedSingleton{
-    
+
+    private static volatile DoubleCheckedSingleton instance; //volatile keyword ensures that the instance is not cached in the thread.
+
+    private DoubleCheckedSingleton(){
+
+    }
+
+    public static DoubleCheckedSingleton getDoubleCheckedSingletonInstance(){
+
+        if(instance == null){
+            synchronized(DoubleCheckedSingleton.class){
+                if(instance == null){
+                    instance = new DoubleCheckedSingleton();
+                }
+            }
+        }
+        return instance;
+    } 
 }
 public class Singleton {
     public static void main(String[] args) {
@@ -65,14 +82,16 @@ public class Singleton {
         */
         //-------------------------------------------
 
-
+        /*
         ThreadSafeSingleton t1 = ThreadSafeSingleton.getThreadSafeSingletonInstance();
         ThreadSafeSingleton t2 = ThreadSafeSingleton.getThreadSafeSingletonInstance();
 
         System.out.println(t1);
         System.out.println(t2);
-
-    
+        
+        */
+        //-------------------------------------------
+        
 
 
 
