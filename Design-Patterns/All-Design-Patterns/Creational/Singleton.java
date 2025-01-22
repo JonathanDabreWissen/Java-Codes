@@ -66,6 +66,19 @@ class DoubleCheckedSingleton{
         return instance;
     } 
 }
+
+class EagerInstantiation{
+    private static final EagerInstantiation instance = new EagerInstantiation();
+
+    private EagerInstantiation(){
+
+    }
+
+    public static EagerInstantiation getEagerInstantiation(){
+
+        return instance;
+    }
+}
 public class Singleton {
     public static void main(String[] args) {
 
@@ -91,6 +104,12 @@ public class Singleton {
         
         */
         //-------------------------------------------
+        DoubleCheckedSingleton d1 = DoubleCheckedSingleton.getDoubleCheckedSingletonInstance();
+        DoubleCheckedSingleton d2 = DoubleCheckedSingleton.getDoubleCheckedSingletonInstance();
+
+        System.out.println(d1);
+        System.out.println(d2);
+
         
 
 

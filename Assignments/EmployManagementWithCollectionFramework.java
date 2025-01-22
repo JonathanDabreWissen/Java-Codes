@@ -132,7 +132,7 @@ class EmployManagementWithCollectionFramework{
 	public static void main(String[] args){
 		
 		Scanner scanner = new Scanner(System.in);
-        TreeMap employMap = new TreeMap();
+        TreeMap <Integer, Employ> employMap = new TreeMap<Integer, Employ>();
 
 		int choice = 0;
 		
@@ -334,6 +334,7 @@ class EmployManagementWithCollectionFramework{
 
 
 				case 6->{
+					scanner.close();
 					System.out.println("Exiting the code");
 				}
                 
