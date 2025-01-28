@@ -3,7 +3,7 @@ interface Tyres{
     void rotate();
 }
 
-interface Accelerator{
+interface PowerUnit{
     void accelerate(); // but it is voilation isp
 }
 
@@ -23,19 +23,19 @@ class MRFTyres implements Tyres{
     }
 }
 
-class ToyotaEngine implements Accelerator{
+class ToyotaEngine implements PowerUnit{
     public  void accelerate(){
         System.out.println("Toyota Engine igniting...");
     }
 }
 
-class FordEngine implements Accelerator{
+class FordEngine implements PowerUnit{
     public void accelerate(){
         System.out.println("Ford Engine igniting...");
     }
 }
 
-class TeslaMotor implements Accelerator{
+class TeslaMotor implements PowerUnit{
     public void accelerate(){
         System.out.println("Tesla motor starting ...");
     }
@@ -54,18 +54,18 @@ class ConventionalBrake implements Brakes{
 }
 
 class Car{
-    private Accelerator accelerator;
+    private PowerUnit powerUnit;
     private Tyres tyres;
     private Brakes brakes;
 
-    public Car(Accelerator accelerator, Tyres tyres, Brakes brakes){
-        this.accelerator = accelerator;
+    public Car(PowerUnit powerUnit, Tyres tyres, Brakes brakes){
+        this.powerUnit = powerUnit;
         this.tyres = tyres;
         this.brakes = brakes;
     }
 
     public void run(){
-        accelerator.accelerate();
+        powerUnit.accelerate();
         tyres.rotate();
         brakes.decelerate();
     }
