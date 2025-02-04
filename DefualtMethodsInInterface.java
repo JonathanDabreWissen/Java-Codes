@@ -5,6 +5,10 @@ interface Vehicle{
     public default void  honk(){
         System.out.println("Honking....");
     }
+
+    public static void getPrototypeVersion(){
+        System.out.println("1.2.3.4");
+    }
 }
 
 class Car implements Vehicle{
@@ -24,6 +28,7 @@ class Bike implements Vehicle{
 
 public class DefualtMethodsInInterface {
     public static void main(String[] args) {
+        Vehicle.getPrototypeVersion();
         Vehicle v1 = new Car();
 
         Vehicle v2 = new Bike();
