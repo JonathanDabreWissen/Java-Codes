@@ -14,7 +14,7 @@ public class MyStreamDemo {
         Long count2 = names.stream().filter(name->name.length()<5).count();
         System.out.println(count2);
 
-        List<String> sortedNames = names.stream().sorted().collect(Collectors.toList());
+        List<String> sortedNames = names.stream().sorted().limit(3).collect(Collectors.toList());
         System.out.println(sortedNames);
 
 
