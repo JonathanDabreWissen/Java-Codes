@@ -56,7 +56,16 @@ public class StreamDemo {
         int res2 = Arrays.asList(1, 2, 3).parallelStream().reduce(10, (a,b)->a+b, (a,b)->a+b);
         System.out.println(res2);
 
+        IntSummaryStatistics stats = IntStream.rangeClosed(1, 10).summaryStatistics();
+        System.out.println(stats);
 
+        
+        System.out.println("Max: " +stats.getMax());
+        System.out.println("Max: " +stats.getMin());
+        System.out.println("Sum: " +stats.getSum());
+        System.out.println("Average: " +stats.getAverage());
+        System.out.println("Count: " +stats.getCount());
+        
 
     }   
 }
