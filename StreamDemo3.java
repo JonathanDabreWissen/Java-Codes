@@ -23,26 +23,26 @@ public class StreamDemo3 {
 
 
         System.out.println("Partitioning");
-        Map<Boolean, List<Emp>> m1 = list.stream().collect((Collectors.partitioningBy(e->e.getAge()>30)));
+        Map<Boolean, List<Emp>> m1 = list.stream().collect((CollectorsPractice.partitioningBy(e->e.getAge()>30)));
         // System.out.println(m1);
         System.out.println(m1.get(true));
         System.out.println();
         System.out.println(m1.get(false));
 
         System.out.println("Partitioning and then Counting");
-        Map<Boolean, Long> m2 = list.stream().collect((Collectors.partitioningBy(e->e.getAge()>30, Collectors.counting())));
+        Map<Boolean, Long> m2 = list.stream().collect((CollectorsPractice.partitioningBy(e->e.getAge()>30, CollectorsPractice.counting())));
         System.out.println(m2);
         System.out.println(m2.get(true)); 
         System.out.println(m2.get(false)); 
         
-        Map<String, List<Emp>> m3 = list.stream().collect((Collectors.groupingBy(e->e.getDesig())));
+        Map<String, List<Emp>> m3 = list.stream().collect((CollectorsPractice.groupingBy(e->e.getDesig())));
         System.out.println(m3);
         
-        Map<String, Long> m4 = list.stream().collect((Collectors.groupingBy(e->e.getDesig(), Collectors.counting())));
+        Map<String, Long> m4 = list.stream().collect((CollectorsPractice.groupingBy(e->e.getDesig(), CollectorsPractice.counting())));
         System.out.println(m4);
         
         
-        Map<String, List<String>> m5 = list.stream().collect(Collectors.groupingBy(e->e.getDesig(), Collectors.mapping(e->e.getName() ,Collectors.toList())));
+        Map<String, List<String>> m5 = list.stream().collect(CollectorsPractice.groupingBy(e->e.getDesig(), CollectorsPractice.mapping(e->e.getName() ,CollectorsPractice.toList())));
         System.out.println(m5);
 
     }

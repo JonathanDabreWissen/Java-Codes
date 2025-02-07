@@ -24,7 +24,7 @@ public class StreamDemo2 {
         List<List<Integer>> list = Arrays.asList(l1, l2, l3);
         System.out.println(list);
 
-        List<Integer> flatList = list.stream().flatMap(cl->cl.stream()).map(x->x+x).collect(Collectors.toList());
+        List<Integer> flatList = list.stream().flatMap(cl->cl.stream()).map(x->x+x).collect(CollectorsPractice.toList());
         System.out.println(flatList);
 
     }

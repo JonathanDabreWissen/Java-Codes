@@ -26,17 +26,17 @@ public class StreamDemo {
         Stream <Integer> s = list.stream();
         Stream <Integer> en = s.filter(p1);
 
-        List<Integer> elist = en.collect(Collectors.toList());
+        List<Integer> elist = en.collect(CollectorsPractice.toList());
 
         System.out.println(elist);
 
-        List<Integer> olist = list.stream().filter(p1.negate()).collect(Collectors.toList());
+        List<Integer> olist = list.stream().filter(p1.negate()).collect(CollectorsPractice.toList());
         System.out.println(olist);
 
-        List<Integer> dlist = list.stream().map(x->x+x).collect(Collectors.toList());
+        List<Integer> dlist = list.stream().map(x->x+x).collect(CollectorsPractice.toList());
         System.out.println(dlist);
 
-        List<Integer> slist = list.stream().sorted().limit(5).skip(1).collect(Collectors.toList());
+        List<Integer> slist = list.stream().sorted().limit(5).skip(1).collect(CollectorsPractice.toList());
         System.out.println(slist);
 
 
