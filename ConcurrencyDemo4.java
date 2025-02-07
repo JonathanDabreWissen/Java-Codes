@@ -38,7 +38,8 @@ public class ConcurrencyDemo4 {
             System.out.println("Summing till 100 is: " +x);
             return x;
         });
-        
+
+        System.out.println("Result from CF1: "+ cf1.getNow("Just for demo"));
         System.out.println("Main Exit :) ");
         Thread.sleep(1000);
 
