@@ -14,6 +14,7 @@ class Dog extends Animal {
 public class CheckingInstanceOf {
     public static void main(String[] args) {
         Animal animal = new Animal();
+        // Animal animal = new Dog();
         
 
         if (animal instanceof Dog) {
