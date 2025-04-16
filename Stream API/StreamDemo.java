@@ -4,6 +4,7 @@ import java.util.function.Predicate;
 
 
 
+
 public class StreamDemo{
 
 	public static void main(String args[]){
@@ -53,6 +54,15 @@ public class StreamDemo{
 			.sorted()
 			.map(n->n*2)
 			.forEach(n -> System.out.println(n));
+
+		
+		//Reduce
+		int result = nums.stream()
+				.filter(predi)
+				.map(n->n*2)
+				.reduce(0, (a,b)->a+b);
+
+		System.out.println("Reduce Result: " + result);
 	}
 }
 
