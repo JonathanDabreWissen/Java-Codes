@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.stream.Stream;
+import java.util.function.Predicate;
 
 
 
@@ -33,7 +34,25 @@ public class StreamDemo{
 			.map(n -> n*2)
 			.forEach( n -> System.out.println(n) );
 
+
+		Predicate<Integer> predi = new Predicate<Integer>(){
+			@Override
+			public boolean test(Integer n){
+				if(n%2 ==1){
+					return true;
+				}
+				else{
+					return false;
+				}
+			}
+		};
+
 		
+		nums.stream()
+			.filter(predi)
+			.sorted()
+			.map(n->n*2)
+			.forEach(n -> System.out.println(n));
 	}
 }
 
